@@ -7,7 +7,8 @@
 	<div class="row">
 		@foreach($trainers as $trainer)
 			<div class="col-sm">
-				<div class="card" style="width: 18rem;">					
+				<div class="card" style="width: 18rem;">	
+				<img class="card-img-top" src="/images/{{$trainer->avatar}}">				
   					<div class="card-body">
     					<h5 class="card-title">{{$trainer->name}}</h5>
     					<p class="card-text">Descripcion descriptiva</p>
