@@ -50,7 +50,7 @@ class TrainerController extends Controller
         $trainer = new Trainer();
         $trainer->name = $request->input('name');
         $trainer->avatar = $name;
-        $trainer->slug = time();
+        $trainer->slug = Str_slug($request->input('name'));
         $trainer->save();
         return 'saved';
     }
@@ -61,8 +61,9 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Trainer $trainer)
+    public function show($slug)
     {
+        $trainer = Trainer::where('slug','=',$slug)->firstOrFail();
         return view('trainers.show', compact('trainer'));
     }
 
