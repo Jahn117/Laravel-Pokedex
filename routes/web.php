@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//EJERCICIO VIDEO 8 -- INICIO -- 
 Route::get('/mi_primer_ruta', function() {
 	return 'Hello World, esta es mi primer ruta';
 });
@@ -24,5 +23,6 @@ Route::get('/name/{name}/apellido/{apellido?}', function($name,$apellido=null){
 	return 'Hola soy '.$name. ' ' .$apellido;
 });
 
-//-- FIN --
+Route::get('prueba/{name}','PruebaController@prueba');
 
+Route::resource('trainers', 'TrainerController');

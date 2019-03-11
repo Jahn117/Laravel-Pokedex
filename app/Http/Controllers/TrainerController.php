@@ -16,9 +16,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        $trainers = Trainer::all();
-
-        return view('trainers.index', compact('trainers'));
+        return 'Hola desde el controlador resource';
     }
 
     /**
@@ -28,7 +26,7 @@ class TrainerController extends Controller
      */
     public function create()
     {
-        return view('trainers.create');
+        //
     }
 
     /**
@@ -37,28 +35,9 @@ class TrainerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrainerRequest $request)
+    public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'name' => 'required|max: 10', 
-        //     'avatar'=> 'required|image'
-        // ]);
-
-        $trainer = new Trainer();
-
-        if ($request->hasFile('avatar')) {
-            $file = $request->file('avatar');
-            $name = time().$file->getClientOriginalName();
-            $destinationPath = public_path('/images');
-            $trainer->avatar = $name;
-            $file->move($destinationPath, $name);
-        }
-
-        $trainer->name = $request->input('name');
-        $trainer->slug = Str_slug($request->input('name'));
-        $trainer->save();
-
-        return 'Saved';
+        //
     }
 
     /**
@@ -67,9 +46,9 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Trainer $trainer)
+    public function show($id)
     {
-        return view('trainers.show', compact('trainer'));
+        //
     }
 
     /**
@@ -80,7 +59,7 @@ class TrainerController extends Controller
      */
     public function edit(Trainer $trainer)
     {
-        return view('trainers.edit', compact('trainer'));
+        //
     }
 
     /**
@@ -90,19 +69,9 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trainer $trainer)
+    public function update(Request $request, $id)
     {
-        $trainer->fill($request->except('avatar'));
-        $trainer->slug = Str_slug($request->input('name'));
-        if ($request->hasFile('avatar')) {
-            $file = $request->file('avatar');
-            $name = time().$file->getClientOriginalName();
-            $destinationPath = public_path('/images');  
-            $file->move($destinationPath, $name);
-        }
-        $trainer->save();
-
-        return 'update';
+        //
     }
 
     /**
@@ -111,11 +80,8 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trainer $trainer)
+    public function destroy($id)
     {
-        $file_path = public_path().'/images/'.$trainer->avatar;
-        \File::delete($file_path);
-        $trainer -> delete();
-        return 'deleted';
+        //
     }
 }
