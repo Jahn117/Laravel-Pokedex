@@ -3,13 +3,13 @@
 @section('title', 'Trainers Create')
 
 @section('content')
-
-	<div class="container">
+	
+	<form class="form-group" method="POST" action="/trainers">
+		@csrf
 		<div class="form-group">
 			<label>Nombre</label>
-			<input type="text" class="form-control">
+			<input type="text" name="name" class="form-control">
 		</div>
 		<button type="submit" class="btn btn-primary">Guardar</button>
-	</div>
-
+	</form>
 @endsection
