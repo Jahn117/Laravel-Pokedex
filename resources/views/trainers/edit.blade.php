@@ -4,18 +4,18 @@
 
 @section('content')
 
-	<form class="form-group" method="POST" action="/trainers/{{$trainer->slug}}" enctype="multipart/form-data">
-		@method('PUT')
+	{!! Form::model($trainer, ['route' => ['trainers.update', $trainer], 'method' => 'PUT', 'files' => true]) !!}
+
 		<div class="form-group">
-			<label>Nombre</label>
-			<input type="text" name="name" value="{{$trainer->name}}" class="form-control">
+			 {!! Form::label('name', 'Nombre') !!}
+			 {!! Form::text('name', null, ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group">
-			<label>Avatar</label>
-			<input type="file" name="avatar">
+			{!! Form::label('avatar', 'Avatar') !!}
+			{!! Form::file('avatar') !!}
 		</div>
-		<button type="submit" class="btn btn-primary">Actualizar</button>	
-		@csrf			
-	</form>
+		{!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+
+	{!! Form::close() !!}
 
 @endsection
