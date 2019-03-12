@@ -53,7 +53,8 @@ class TrainerController extends Controller
         $trainer->avatar = $name;
         $trainer->slug = Str_slug($request->input('name'));
         $trainer->save();
-        return 'saved';
+        
+        return redirect()->route('trainers.index');
     }
 
     /**
@@ -98,7 +99,7 @@ class TrainerController extends Controller
         }
         $trainer->save();
 
-        return 'updated';
+        return redirect()->route('trainers.show', [$trainer]);
     }
 
     /**
@@ -112,6 +113,6 @@ class TrainerController extends Controller
         $file_path = public_path().'/images/'.$trainer->avatar;
         \File::delete($file_path);
         $trainer -> delete();
-        return 'deleted';
+        return redirect()->route('trainers.index');
     }
 }
