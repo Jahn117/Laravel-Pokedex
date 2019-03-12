@@ -54,7 +54,7 @@ class TrainerController extends Controller
         $trainer->slug = Str_slug($request->input('name'));
         $trainer->save();
         
-        return redirect()->route('trainers.index');
+        return redirect()->route('trainers.index')->with('status', 'Entrenador creado correctamente');
     }
 
     /**
@@ -99,7 +99,7 @@ class TrainerController extends Controller
         }
         $trainer->save();
 
-        return redirect()->route('trainers.show', [$trainer]);
+        return redirect()->route('trainers.show', [$trainer])->with('status', 'Entrenador actualizado correctamente');
     }
 
     /**
@@ -113,6 +113,6 @@ class TrainerController extends Controller
         $file_path = public_path().'/images/'.$trainer->avatar;
         \File::delete($file_path);
         $trainer -> delete();
-        return redirect()->route('trainers.index');
+        return redirect()->route('trainers.index')->with('status', 'Entrenador eliminado correctamente');
     }
 }
