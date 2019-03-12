@@ -4,11 +4,7 @@
 
 @section('content')
 
-	@if(session('status'))
-		<div class="alert alert-success">
-			{{session('status')}}
-		</div>
-	@endif
+	@include('common.success')
 
 	<img style="height: 200px; width: 200px; background-color: #EFEFEF; margin: 20px" class="card-img-top rounded-circle mx-auto d-block" src="/images/{{$trainer->avatar}}">
 	<div class="text-center">

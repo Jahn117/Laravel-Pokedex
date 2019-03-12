@@ -4,11 +4,7 @@
 
 @section('content')
 
-	@if(session('status'))
-		<div class="alert alert-success">
-			{{session('status')}}
-		</div>
-	@endif
+	@include('common.success')
 
 	<div class="row">
 		@foreach($trainers as $trainer)
