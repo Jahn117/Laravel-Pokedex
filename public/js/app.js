@@ -1814,20 +1814,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      pokemons: [{
-        id: 1,
-        name: "Pikachu"
-      }, {
-        id: 2,
-        name: "Squirtle"
-      }, {
-        id: 3,
-        name: "Charizard"
-      }]
+      pokemons: []
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    axios.get('http://localhost:8000/pokemons').then(function (response) {
+      return _this.pokemons = response.data;
+    });
   }
 });
 
