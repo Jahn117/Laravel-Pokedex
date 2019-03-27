@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<add-pokemon-btn></add-pokemon-btn>
-	<pokemons-component></pokemons-component>
-	<create-form-component></create-form-component>
+	<modal-button></modal-button>
+	<list-of-pokemons></list-of-pokemons>
+	<create-form-pokemon></create-form-pokemon>
 
 @endsection
