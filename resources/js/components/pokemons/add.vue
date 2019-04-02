@@ -36,11 +36,13 @@
 		},
 		methods: {
 			savePokemon: function(){
-				axios.post('http://localhost:8000/pokemons',{
+				let currentRoute = window.location.pathname	
+				axios.post(`http://localhost:8000${currentRoute}/pokemons`,{
 					name: this.name,
 					picture: this.picture
 				})
 				.then(function(res){
+					console.log(res)
 					$('#addPokemon').modal('hide')
 					EventBus.$emit('pokemon-added', res.data.pokemon)
 				})

@@ -1801,10 +1801,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     savePokemon: function savePokemon() {
-      axios.post('http://localhost:8000/pokemons', {
+      var currentRoute = window.location.pathname;
+      axios.post("http://localhost:8000".concat(currentRoute, "/pokemons"), {
         name: this.name,
         picture: this.picture
       }).then(function (res) {
+        console.log(res);
         $('#addPokemon').modal('hide');
         _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('pokemon-added', res.data.pokemon);
       }).catch(function (err) {

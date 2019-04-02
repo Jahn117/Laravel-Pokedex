@@ -3,6 +3,7 @@
 namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Blog\Trainer;
 use Blog\Pokemon;
 
 class PokemonController extends Controller
@@ -15,14 +16,16 @@ class PokemonController extends Controller
     	return view('pokemons.index');
     }
 
-    public function store(Request $request){
+    public function store(Trainer $trainer, Request $request){
         if ($request->ajax()) {
             $pokemon = new Pokemon();
             $pokemon-> name = $request->input('name');
             $pokemon-> picture = $request->input('picture');
-            $pokemon->save();
+            $pokemon->trainer()->associate($trainer)->save();
+            //$pokemon->save();
 
             return response()->json([
+                //"trainer"=>$trainer,
                 "message" => "Pokemon creado correctamente",
                 "pokemon" => $pokemon
             ], 200);
