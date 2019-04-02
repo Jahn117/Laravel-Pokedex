@@ -29,8 +29,9 @@
 			})
 		},
 		mounted(){
+			let currentRoute = window.location.pathname	
 			axios
-			.get('http://localhost:8000/pokemons')
+			.get(`http://localhost:8000${currentRoute}/pokemons`)
 			.then((res) => {
 				this.pokemons = res.data
 				this.loading = false

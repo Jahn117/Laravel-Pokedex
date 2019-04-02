@@ -8,10 +8,9 @@ use Blog\Pokemon;
 
 class PokemonController extends Controller
 {
-    public function index(Request $request){
+    public function index(Trainer $trainer, Request $request){
     	if ($request->ajax()) {
-            $pokemons = Pokemon::all();
-    		return response()->json($pokemons, 200);
+    		return response()->json($trainer->pokemons, 200);
     	}
     	return view('pokemons.index');
     }
