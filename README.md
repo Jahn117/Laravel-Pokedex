@@ -1,0 +1,1 @@
+"Pokedex hecho en Laravel"
